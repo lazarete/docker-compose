@@ -1,0 +1,16 @@
+version: '3'
+services:
+  iris:
+    image: "intersystems/iris:2019.2.0.107.0"
+    container_name: iris
+    ports:
+      - "52773:52773"
+      - "51773:51773"
+      - "2188:2188"
+    volumes:
+      - .:/ISC
+      - ./key:/key
+    environment:
+      - ISC_DATA_DIRECTORY=/ISC/dur
+	  - TZ=America/Sao_Paulo
+    command: --key /key/iris_prod.key --docker update --restart unless-stopped iris
