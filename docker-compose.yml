@@ -10,6 +10,8 @@ services:
     volumes:
       - .:/ISC
       - ./key:/key
+      #- /usr/lib/jvm/java-8-openjdk-amd64:/java_home
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - ISC_DATA_DIRECTORY=/ISC/dur
     command: --key /key/iris.key
